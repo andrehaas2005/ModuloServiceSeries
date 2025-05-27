@@ -2,11 +2,23 @@ import XCTest
 @testable import ModuloServiceSeries
 
 final class ModuloServiceSeriesTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    var networkService: NetworkServiceProtocol!
+    
+    override func setUp() {
+        super.setUp()
+        networkService = NetworkService.shared
+    }
+    
+    func testRequestSuccess() async {
+        
+        let request = APIRequest(path: "top_rated", method: .get)
+        
+        do {
+            let series: Cover =  try await networkService.request(request)
+            XCTAssertNotNil(series)
+        } catch {
+            XCTFail("Request failed with error: \(error)")
+        }
     }
 }
