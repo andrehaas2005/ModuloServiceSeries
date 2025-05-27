@@ -1,19 +1,11 @@
-import Foundation
+//
+//  Result.swift
+//  ModuloServiceSeries
+//
+//  Created by Andre  Haas on 27/05/25.
+//
 
-// MARK: - Cover
-struct Cover: Codable {
-    let page: Int
-    let results: [Result]
-    let totalPages, totalResults: Int
 
-    enum CodingKeys: String, CodingKey {
-        case page, results
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-    }
-}
-
-// MARK: - Result
 struct Result: Codable {
     let adult: Bool
     let backdropPath: String
@@ -42,17 +34,4 @@ struct Result: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum OriginCountry: String, Codable {
-    case ca = "CA"
-    case jp = "JP"
-    case kr = "KR"
-    case us = "US"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case ja = "ja"
-    case ko = "ko"
 }
