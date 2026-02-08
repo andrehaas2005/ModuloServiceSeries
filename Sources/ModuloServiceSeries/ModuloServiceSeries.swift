@@ -2,10 +2,10 @@ import Foundation
 
 @available(iOS 15.0, *)
 @available(macOS 12.0, *)
-class NetworkService: NetworkServiceProtocol {
+public class NetworkService: NetworkServiceProtocol {
     private let session: URLSession
     
-    nonisolated(unsafe) static let shared = NetworkService()
+    nonisolated(unsafe) public static let shared = NetworkService()
     
     init(session: URLSession = .shared) {
         self.session = session
